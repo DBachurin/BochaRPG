@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple HTML5 Game</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="480" height="320"></canvas>
+    <script>
+        let canvas = document.getElementById("gameCanvas");
+        let ctx = canvas.getContext("2d");
+
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        let dx = 2;
+        let dy = 2;
+        let squareSize = 20;
+
+        function drawSquare() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.rect(x, y, squareSize, squareSize);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function moveSquare(event) {
+            if (event.key == "Right" || event.key == "ArrowRight") {
+                x += dx;
+            } else if (event.key == "Left" || event.key == "ArrowLeft") {
+                x -= dx;
+            } else if (event.key == "Up" || event.key == "ArrowUp") {
+                y -= dy;
+            } else if (event.key == "Down" || event.key == "ArrowDown") {
+                y += dy;
+            }
+            drawSquare();
+        }
+
+        document.addEventListener("keydown", moveSquare);
+
+        drawSquare();
+    </script>
+</body>
+</html>
