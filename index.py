@@ -1,6 +1,4 @@
-
-import config
-
+import os
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types.web_app_info import WebAppInfo
 
@@ -11,7 +9,7 @@ from aiogram.types.web_app_info import WebAppInfo
 #           proxy=PROXY_URL
 #           )
 
-bot = Bot(token=config.BOT_TOKEN)
+bot = Bot(token=os.environ["BOT_TOKEN"])
 
 
 dp = Dispatcher(bot)
